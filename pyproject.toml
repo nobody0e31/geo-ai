@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geovision-ai"
+version = "0.1.0"
+description = "GeoVision AI: end-to-end pipeline for rural infrastructure extraction from drone imagery."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [{name = "lawagorith"}]
+dependencies = [
+  "numpy>=1.24",
+  "torch>=2.2",
+  "torchvision>=0.17",
+  "opencv-python>=4.8",
+  "pillow>=10.0",
+  "rasterio>=1.3",
+  "geopandas>=0.14",
+  "shapely>=2.0",
+  "tqdm>=4.66",
+  "pydantic>=2.6",
+  "streamlit>=1.31",
+  "pydeck>=0.8",
+  "scikit-learn>=1.3",
+  "pandas>=2.0",
+]
+
+[project.scripts]
+geovision-train = "geovision_ai.pipelines.train:main"
+geovision-infer = "geovision_ai.pipelines.infer:main"
+geovision-validate = "geovision_ai.pipelines.validate:main"
+geovision-preprocess = "geovision_ai.pipelines.preprocess:main"
+geovision-dashboard = "geovision_ai.ui.dashboard:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
